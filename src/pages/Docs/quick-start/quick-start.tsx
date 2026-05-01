@@ -12,10 +12,10 @@ import {
 import { CodeBlock } from "@/components/code-block/code-block";
 
 const INSTALL_TABS = [
-  { value: "npm", label: "npm", code: "npm install lime-db" },
-  { value: "pnpm", label: "pnpm", code: "pnpm add lime-db" },
-  { value: "bun", label: "bun", code: "bun add lime-db" },
-  { value: "yarn", label: "yarn", code: "yarn add lime-db" },
+  { value: "npm", label: "npm", code: "npm install lime-db-js" },
+  { value: "pnpm", label: "pnpm", code: "pnpm add lime-db-js" },
+  { value: "bun", label: "bun", code: "bun add lime-db-js" },
+  { value: "yarn", label: "yarn", code: "yarn add lime-db-js" },
 ];
 
 export function QuickStartPage() {
@@ -30,7 +30,7 @@ export function QuickStartPage() {
       <section className="mb-10">
         <h2 className="mb-3 font-semibold text-xl">Installation</h2>
         <Tabs defaultValue="npm">
-          <TabsList className="mb-2">
+          <TabsList className="mb-2 flex">
             <TabsHighlight className="flex gap-1 rounded-lg bg-muted p-1">
               {INSTALL_TABS.map(({ value, label }) => (
                 <TabsHighlightItem
@@ -39,7 +39,7 @@ export function QuickStartPage() {
                   value={value}
                 >
                   <TabsTrigger
-                    className="relative z-10 cursor-pointer rounded-md px-3 py-1.5 font-medium text-muted-foreground text-sm transition-colors data-[state=active]:text-foreground"
+                    className="relative z-10 cursor-pointer rounded-md px-3 py-1.5 font-medium text-muted-foreground text-sm transition-colors hover:text-primary data-[state=active]:text-foreground"
                     value={value}
                   >
                     {label}
