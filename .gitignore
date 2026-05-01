@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# personal agents
+.github/agents/frontend-developer.md
