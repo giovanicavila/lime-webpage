@@ -1,6 +1,22 @@
 import { ArrowRight, ChevronLeft } from "lucide-react";
 import { Link } from "react-router";
+import {
+	Tabs,
+	TabsContent,
+	TabsContents,
+	TabsHighlight,
+	TabsHighlightItem,
+	TabsList,
+	TabsTrigger,
+} from "@/components/animate-ui/primitives/animate/tabs";
 import { CodeBlock } from "@/components/code-block/code-block";
+
+const INSTALL_TABS = [
+	{ value: "npm", label: "npm", code: "npm install lime-db" },
+	{ value: "pnpm", label: "pnpm", code: "pnpm add lime-db" },
+	{ value: "bun", label: "bun", code: "bun add lime-db" },
+	{ value: "yarn", label: "yarn", code: "yarn add lime-db" },
+];
 
 export function QuickStartPage() {
   return (
@@ -13,10 +29,33 @@ export function QuickStartPage() {
 
       <section className="mb-10">
         <h2 className="mb-3 font-semibold text-xl">Installation</h2>
-        <CodeBlock code="npm install lime-db" language="bash" />
-        <p className="mt-3 text-muted-foreground text-sm">
-          Works with npm, pnpm, yarn, or bun.
-        </p>
+				<Tabs defaultValue="npm">
+					<TabsList className="mb-2">
+						<TabsHighlight className="flex gap-1 rounded-lg bg-muted p-1">
+							{INSTALL_TABS.map(({ value, label }) => (
+								<TabsHighlightItem
+									key={value}
+									value={value}
+									className="rounded-md"
+								>
+									<TabsTrigger
+										value={value}
+										className="data-[state=active]:text-foreground relative z-10 cursor-pointer rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors"
+									>
+										{label}
+									</TabsTrigger>
+								</TabsHighlightItem>
+							))}
+						</TabsHighlight>
+					</TabsList>
+					<TabsContents>
+						{INSTALL_TABS.map(({ value, code }) => (
+							<TabsContent key={value} value={value}>
+								<CodeBlock code={code} language="bash" />
+							</TabsContent>
+						))}
+					</TabsContents>
+				</Tabs>
       </section>
 
       <section className="mb-10">
