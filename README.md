@@ -1,6 +1,6 @@
-# Frontend Development Template
+# Lime DB — Documentation Website
 
-A production-ready React + TypeScript frontend template built with Vite.
+Official documentation site for **Lime DB**, a browser-native vector database. Built with React + TypeScript + Vite and deployed to GitHub Pages.
 
 ## Tech Stack
 
@@ -8,7 +8,7 @@ A production-ready React + TypeScript frontend template built with Vite.
 |---|---|
 | React 19 | UI library |
 | TypeScript | Static type checking |
-| Vite 8 | Build tool and dev server (oxc and rolldown) |
+| Vite | Build tool and dev server |
 | React Router 7 | Client-side routing |
 | TanStack Query v5 | Server state management |
 | Tailwind CSS 4 | Utility-first styling |
@@ -17,6 +17,18 @@ A production-ready React + TypeScript frontend template built with Vite.
 | Vitest | Unit testing |
 | Biome + Ultracite | Linting and formatting |
 | Husky | Git hooks |
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Landing page |
+| `/docs/introduction` | What is Lime DB |
+| `/docs/quick-start` | Installation and first steps |
+| `/docs/architecture` | How Lime DB works internally |
+| `/docs/concepts` | Chunking, embeddings, and similarity |
+| `/docs/api-reference` | Full `BrowserVectorDB` API |
+| `/docs/indexeddb` | Persistence with IndexedDB |
 
 ## Project Structure
 
@@ -30,12 +42,15 @@ src/
 ├── components/
 │   ├── ui/         # shadcn/ui primitives
 │   ├── animate-ui/ # Animated components
-│   └── sidebar/    # Sidebar layout components
+│   ├── code-block/ # Syntax-highlighted code blocks
+│   ├── doc-header/ # Top navigation bar
+│   ├── doc-sidebar/# Docs sidebar navigation
+│   └── lime-logo/  # Lime DB logo SVG component
 ├── config/       # App-level configuration
-├── constants/    # Shared constants
-├── contexts/     # React contexts (e.g. theme)
+├── constants/    # Shared constants (nav items, etc.)
+├── contexts/     # React contexts (theme)
 ├── hooks/        # Custom React hooks
-├── layout/       # Root layout
+├── layout/       # Root and doc layouts
 ├── lib/          # Utility functions
 ├── pages/        # Route-level pages
 ├── providers/    # App-wide providers
@@ -44,22 +59,27 @@ src/
 └── utils/        # General-purpose utilities
 ```
 
-## How to Use
-
-This repository is configured as a GitHub template. To start a new project from it:
-
-1. On the repository page, click **Use this template** > **Create a new repository**
-2. Choose a name, visibility, and owner for the new repository
-3. Click **Create repository**
-
-Then clone and install dependencies locally:
+## Getting Started
 
 ```bash
-git clone <your-new-repository-url>
-cd <your-project>
-bun install   # recommended
+git clone https://github.com/giovani/lime-webpage
+cd lime-webpage
+bun install
 bun dev
 ```
 
-> **Recommendation:** Use [Bun](https://bun.sh) as the package manager and runtime. It is significantly faster than npm or pnpm for installs and script execution.
+## Scripts
+
+| Command | Description |
+|---|---|
+| `bun dev` | Start dev server |
+| `bun build` | Production build |
+| `bun preview` | Preview production build locally |
+| `bun check` | Lint and type-check with Biome |
+| `bun fix` | Auto-fix lint issues |
+| `bun test` | Run tests with Vitest |
+
+## Deployment
+
+Automatically deployed to GitHub Pages on every push to `main` via GitHub Actions. The workflow builds the site with `VITE_BASE_PATH=/lime-webpage/` and copies `index.html` to `404.html` for SPA routing support.
 
