@@ -1,6 +1,8 @@
-import { /* Github, */ Menu, Search, X } from "lucide-react";
+//biome-ignore-all lint: this works fine
+import { Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
+import githubIcon from "@/assets/github.svg";
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 import { DocNavList } from "@/components/doc-nav-list/doc-nav-list";
 import { LimeLogo } from "@/components/lime-logo/lime-logo";
@@ -9,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-const GITHUB_URL = "https://github.com/lime-db/lime-db";
+const GITHUB_URL = "https://github.com/giovanicavila/Lime";
 
 export function DocHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -130,7 +132,7 @@ export function DocHeader() {
               variant="ghost"
             >
               <a href={GITHUB_URL} rel="noreferrer" target="_blank">
-                {/* <Github className="h-4 w-4" /> */}
+                <img alt="GitHub" className="h-4 w-4" src={githubIcon} />
               </a>
             </Button>
 
